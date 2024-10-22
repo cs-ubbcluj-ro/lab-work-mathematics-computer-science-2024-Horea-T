@@ -1,6 +1,6 @@
 THM Language
 int n, k, i, count;
-typedef bool;
+typedef int bool;
 int primes[100];
 
 input(k);
