@@ -63,7 +63,7 @@
 			term ::= factor | factor mul_operator term
 			factor ::= identifier | constant | "(" expression ")"
 			add_operator ::= "+" | "-"
-			mul_operator ::= "*" | "/"
+			mul_operator ::= "*" | "/" | "%" 
 
 		Conditions:
 			condition ::= expression relational_operator expression
