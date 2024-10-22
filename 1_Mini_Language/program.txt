@@ -1,3 +1,4 @@
+THM Language
 int n, k, i, count;
 typedef bool;
 int primes[100];
