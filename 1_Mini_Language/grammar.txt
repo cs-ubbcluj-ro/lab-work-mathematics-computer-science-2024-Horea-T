@@ -34,7 +34,7 @@
 2. Syntax:
 	2.1 Syntactical Rules:
 		Program structure:
-			program ::= declaration_list statement_list
+			thm_program ::= declaration_list statement_list
 
 		Declarations:
 			declaration_list ::= declaration ";" | declaration ";" declaration_list
