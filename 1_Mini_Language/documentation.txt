@@ -1,0 +1,34 @@
+Grammar specification:
+
+Alphabet:
+Defines the basic character set allowed in the language:
+
+Letters: Upper (A-Z) and lower case (a-z) characters of the English alphabet
+Underline (_) is allowed, particularly useful in identifiers
+Digits: Decimal digits (0-9)
+
+Lexical Elements:
+Special Symbols: include operators (+, -, *, /, ...) and separators (;, ,, (), {}, ...)
+Reserved Words: keywords: int, char, typedef, if, else, while, for, input, and output which have special meanings in the language
+Identifiers: names given to var, func, starting with a letter or underscore and followed by letters, digits or underscores
+
+Constants:
+Integer Constants: a sequence of digits
+Character Constants: single character enclosed in single quotes
+String Constants: a sequence of characters enclosed in double quotes
+
+Syntax:
+Program Structure: the program has a list of declarations and a list of statements
+Declarations: def vars and user-defined types using keywords: int, char, and typedef
+
+Statements:
+Assignment: assigns values to variables
+Conditional: if and else statements
+Loops: while and for loops
+Input/Output: input for reading values and output for printing values
+
+Expressions: 
+Define how calculations are done with operators such as +, -, *, and /
+Conditions: Define relational operations such as ==, !=, <, >, <=, >= for comparing values
+
+
