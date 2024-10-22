@@ -1,0 +1,84 @@
+1. Language Definition
+	1.1 Alphabet:
+		1.1.a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+
+		1.1.b. Underline character _
+
+		1.1.c. Decimal digits (0-9)
+
+	1.2 Lexical Elements:
+		Special symbols, representing:
+
+			operators: +, -, *, /, =, ==, !=, <, <=, >, >=
+			separators: ;, ,, (, ), {, }, [ ]
+		Reserved words:
+
+		int, char, typedef, if, else, while, for, input, output
+
+		Identifiers:
+			identifier ::= letter | "_" {letter | digit | "_"}
+			letter ::= "A" | "B" | ... | "Z" | "a" | "b" | ... | "z"
+			digit ::= "0" | "1" | ... | "9"
+
+		Constants:
+			1. Integer constants:
+				integer_const ::= digit {digit}
+
+			2. Character constants:
+				character_const ::= "'" letter "'"
+			
+			3. String constants:
+				string_const ::= '"' {letter | digit | " "} '"'
+
+
+2. Syntax:
+	2.1 Syntactical Rules:
+		Program structure:
+			program ::= declaration_list statement_list
+
+		Declarations:
+			declaration_list ::= declaration ";" | declaration ";" declaration_list
+			declaration ::= "int" id_list | "char" id_list | "typedef" user_defined_type
+			user_defined_type ::= identifier
+			id_list ::= identifier | identifier "," id_list
+
+		Statements:
+			statement_list ::= statement ";" | statement ";" statement_list
+			statement ::= assignment_stmt | conditional_stmt | loop_stmt | io_stmt
+
+		Assignment statements:
+			assignment_stmt ::= identifier "=" expression
+			
+		Conditional statements:
+			conditional_stmt ::= "if" "(" condition ")" "{" statement_list "}" ["else" "{" statement_list "}"]
+
+		Loop statements:
+			loop_stmt ::= "while" "(" condition ")" "{" statement_list "}" | "for" "(" assignment_stmt ";" condition ";" expression ")" "{" 			statement_list "}"
+
+		Input/output statements:
+			io_stmt ::= "input" "(" identifier ")" | "output" "(" expression ")"
+
+		Expressions:
+			expression ::= term | term add_operator expression
+			term ::= factor | factor mul_operator term
+			factor ::= identifier | constant | "(" expression ")"
+			add_operator ::= "+" | "-"
+			mul_operator ::= "*" | "/"
+
+		Conditions:
+			condition ::= expression relational_operator expression
+			relational_operator ::= "==" | "!=" | "<" | ">" | "<=" | ">="
+
+		Constants:
+			constant ::= integer_const | character_const
+
+
+
+
+
+
+
+
+
+
+
