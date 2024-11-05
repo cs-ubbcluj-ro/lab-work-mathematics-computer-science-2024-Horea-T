@@ -7,7 +7,7 @@
 #define YY_NO_UNPUT
 #define YY_DECL int yylex()
 
-int yylineno = 1;  // Inițializăm linia curentă
+int yylineno = 1;  // Inițializăm linia curenta
 
 typedef struct {
     char symbol[50];
@@ -79,9 +79,9 @@ CHARACTER   \'[a-zA-Z0-9]\'
 {CHARACTER}      { int pos = addSymbol(yytext); addPIF(yytext, pos); }
 {OPERATOR}       { addPIF(yytext, 0); }
 {SEPARATOR}      { addPIF(yytext, 0); }
-\/\/[^\n]*       { /* ignorăm comentariile */ }
+\/\/[^\n]*       { /* ignoram comentariile */ }
 \n               { yylineno++; /* incrementăm linia */ }
-[ \t\r]+         { /* ignorăm spațiile albe */ }
+[ \t\r]+         { /* ignoram spatiile albe */ }
 .                { printf("Lexical error at line %d: %s\n", yylineno, yytext); }
 
 %%
