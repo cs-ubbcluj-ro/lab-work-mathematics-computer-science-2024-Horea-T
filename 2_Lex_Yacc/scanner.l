@@ -7,23 +7,26 @@
 #define YY_NO_UNPUT
 #define YY_DECL int yylex()
 
-int yylineno = 1;  // Initializam linia curenta
+int yylineno = 1;  
+// Initializarea liniei curente
 
 typedef struct {
     char symbol[50];
     int code;
 } SymbolTableEntry;
+// definire tabel simboluri
 
 typedef struct {
     char token[50];
     int position;
 } PIFEntry;
+// definire tabel PIF
 
 SymbolTableEntry symbolTable[MAX_SYMBOLS];
-int symbolCount = 0;
+int symbolCount = 0; //numarare simboluri
 
 PIFEntry pif[MAX_SYMBOLS];
-int pifCount = 0;
+int pifCount = 0; //numarare pif
 
 int addSymbol(const char *symbol) {
     for (int i = 0; i < symbolCount; i++) {
@@ -35,12 +38,14 @@ int addSymbol(const char *symbol) {
     symbolTable[symbolCount].code = symbolCount;
     return symbolCount++;
 }
+//adaugarea simbolurilor in tabel
 
 void addPIF(const char *token, int position) {
     strcpy(pif[pifCount].token, token);
     pif[pifCount].position = position;
     pifCount++;
 }
+//adaugare in pif
 
 void printSymbolTable() {
     printf("Symbol Table:\n");
@@ -48,6 +53,7 @@ void printSymbolTable() {
         printf("%d: %s\n", symbolTable[i].code, symbolTable[i].symbol);
     }
 }
+//print
 
 void printPIF() {
     printf("Program Internal Form:\n");
@@ -55,10 +61,11 @@ void printPIF() {
         printf("%s: %d\n", pif[i].token, pif[i].position);
     }
 }
+//print
 
 int yywrap(void) {
     return 1;
-}
+}  //indica sfarsitul fisierului de intrare
 %}
 
 DIGIT       [0-9]
@@ -80,7 +87,7 @@ CHARACTER   \'[a-zA-Z0-9]\'
 {OPERATOR}       { addPIF(yytext, 0); }
 {SEPARATOR}      { addPIF(yytext, 0); }
 \/\/[^\n]*       { /* ignoram comentariile */ }
-\n               { yylineno++; /* incrementam linia */ }
+\n               { yylineno++; } // incrementare linie
 [ \t\r]+         { /* ignoram spatiile albe */ }
 .                { printf("Lexical error at line %d: %s\n", yylineno, yytext); }
 
