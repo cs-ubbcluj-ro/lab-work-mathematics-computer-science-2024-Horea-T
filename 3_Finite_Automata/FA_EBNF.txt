@@ -1,0 +1,14 @@
+<finite-automaton> ::= <states> <alphabet> <transitions> <initial-state> <final-states>
+
+<states> ::= "states:" "{" <state-list> "}"
+<alphabet> ::= "alphabet:" "{" <symbol-list> "}"
+<transitions> ::= "transitions:" { <transition> }
+<initial-state> ::= "initial:" <state>
+<final-states> ::= "final:" "{" <state-list> "}"
+
+<state-list> ::= <state> [ <state-list> ]
+<symbol-list> ::= <symbol> [ <symbol-list> ]
+<transition> ::= "(" <state> "," <symbol> "," <state> ")"
+
+<state> ::= [a-zA-Z][a-zA-Z0-9]*  
+<symbol> ::= [a-zA-Z0-9]          
