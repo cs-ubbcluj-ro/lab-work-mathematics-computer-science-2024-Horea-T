@@ -64,9 +64,18 @@ void readFA(const char *filename) {
                 strcpy(transitions[numTransitions].to, to);
                 numTransitions++;
             }
+		char *token = strtok(line, ":");
+            	token = strtok(NULL, " \n");
+            	if (token) {
+                	strcpy(initialState, token);
+            	} else {
+                	printf("Error: Failed to read initial state.\n");
+            	}
+
         } else if (strstr(line, "initial:") != NULL) {
             char *token = strtok(line, ":");
             token = strtok(NULL, " \n");
+			printf("Token is: %s", token); 
             if (token) {
                 strcpy(initialState, token);
             } else {
