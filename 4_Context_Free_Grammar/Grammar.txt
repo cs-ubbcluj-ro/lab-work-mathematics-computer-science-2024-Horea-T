@@ -1,0 +1,131 @@
+# Grammar for the THM Language
+
+# Non-Terminal Nodes
+<identifier>
+<constant>
+<integer_const>
+<character_const>
+<expression>
+<term>
+<factor>
+<add_operator>
+<mul_operator>
+<condition>
+<relational_operator>
+<declaration_list>
+<declaration>
+<user_defined_type>
+<id_list>
+<statement_list>
+<statement>
+<assignment_stmt>
+<conditional_stmt>
+<loop_stmt>
+<io_stmt>
+<thm_program>
+
+# Terminal Nodes
+"THM Language"
+"int"
+"char"
+"typedef"
+"if"
+"else"
+"while"
+"for"
+"input"
+"output"
+"="
+"=="
+"!="
+"<"
+"<="
+">"
+">="
+"+"
+"-"
+"*"
+"/"
+"%"
+";"
+","
+"("
+")"
+"{"
+"}"
+"["
+"]"
+
+# Syntactic Rules
+<thm_program> ::= "THM Language" <declaration_list> <statement_list>
+
+<declaration_list> ::= <declaration> ";"
+                     | <declaration> ";" <declaration_list>
+
+<declaration> ::= "int" <id_list>
+                | "char" <id_list>
+                | "typedef" <user_defined_type>
+
+<user_defined_type> ::= <identifier>
+
+<id_list> ::= <identifier>
+            | <identifier> "," <id_list>
+
+<statement_list> ::= <statement> ";"
+                   | <statement> ";" <statement_list>
+
+<statement> ::= <assignment_stmt>
+              | <conditional_stmt>
+              | <loop_stmt>
+              | <io_stmt>
+
+<assignment_stmt> ::= <identifier> "=" <expression>
+
+<conditional_stmt> ::= "if" "(" <condition> ")" "{" <statement_list> "}"
+                     | "if" "(" <condition> ")" "{" <statement_list> "}" "else" "{" <statement_list> "}"
+
+<loop_stmt> ::= "while" "(" <condition> ")" "{" <statement_list> "}"
+              | "for" "(" <assignment_stmt> ";" <condition> ";" <expression> ")" "{" <statement_list> "}"
+
+<io_stmt> ::= "input" "(" <identifier> ")"
+            | "output" "(" <expression> ")"
+
+<expression> ::= <term>
+               | <term> <add_operator> <expression>
+
+<term> ::= <factor>
+         | <factor> <mul_operator> <term>
+
+<factor> ::= <identifier>
+           | <constant>
+           | "(" <expression> ")"
+
+<add_operator> ::= "+"
+                | "-"
+
+<mul_operator> ::= "*"
+                 | "/"
+                 | "%"
+
+<condition> ::= <expression> <relational_operator> <expression>
+
+<relational_operator> ::= "=="
+                        | "!="
+                        | "<"
+                        | ">"
+                        | "<="
+                        | ">="
+
+<constant> ::= <integer_const>
+             | <character_const>
+
+<integer_const> ::= <digit>
+                  | <digit> <integer_const>
+
+<character_const> ::= "'" <letter> "'"
+
+<identifier> ::= <letter>
+               | <letter> <identifier>
+
+<letter> ::= [a-zA-Z]
+<digit> ::= [0-9]
